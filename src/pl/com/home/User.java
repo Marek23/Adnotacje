@@ -2,12 +2,9 @@ package pl.com.home;
 
 import java.io.Serializable;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter @Setter @NoArgsConstructor @ToString
+@Data
 public class User implements Serializable {
 	private String firstName;
 	private String lastName;
