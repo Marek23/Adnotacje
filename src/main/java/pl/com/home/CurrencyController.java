@@ -1,25 +1,26 @@
 package pl.com.home;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
 import pl.com.home.config.Currency;
+import pl.com.home.config.CurrencyRepository;
 
 @RestController
-@RequestMapping("/currency")
 @AllArgsConstructor
 public class CurrencyController {
-	private CurrencyService service;
+	private CurrencyRepository repository;
 
-	@GetMapping("/pln")
-	public Currency pln() {
-		return service.getPln();
+	@GetMapping("/currency")
+	public Currency currency(@RequestParam(name = "id") Long id ) {
+		return repository.findById(id).get();
 	}
 
-	@GetMapping("/usd")
-	public Currency usd() {
-		return service.getUsd();
+	@GetMapping("/currency/{type}")
+	public Currency currency(@PathVariable("type") String type ) {
+		return repository.findByType(type.toUpperCase());
 	}
 }

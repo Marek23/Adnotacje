@@ -8,11 +8,11 @@ public class CurrencyFactory {
 
 	@Bean(name = "pln")
 	public Currency pln() {
-		return new Currency("PLN", "Polski złoty", 1f);
+		return new Currency(-1l, "PLN", "Polski złoty", 1f);
 	}
 
 	@Bean(name = "usd")
 	public Currency usd() {
-		return new Currency("USD", "Dolar amerykański", 4.13f);
+		return new Currency(-1l, "USD", "Dolar amerykański", 4.13f);
 	}
 }
